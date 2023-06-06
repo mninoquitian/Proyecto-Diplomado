@@ -70,22 +70,15 @@ Corra el siguiente comando docker compose up esto se encargará de bajar las im�
 
 1. Dar clic en el botón de Restart
 
-![Imagen que contiene Texto
-
-Descripción generada automáticamente](img/Aspose.Words.982bc6c4-3d7f-4c15-b611-ad1a91310416.003.png)
+![Imagen que contiene Texto Descripción generada automáticamente](img/Aspose.Words.982bc6c4-3d7f-4c15-b611-ad1a91310416.003.png)
 
 1. Ahora ve a la carpeta docker/rules y busca el archivo local.rules,  en el editor integrado de docker desktop pega las reglas que necesites para el monitoreo y guarda los cambios.
 
-![Captura de pantalla de computadora
-
-Descripción generada automáticamente](img/Aspose.Words.982bc6c4-3d7f-4c15-b611-ad1a91310416.004.png) 
+![Captura de pantalla de computadora Descripción generada automáticamente](img/Aspose.Words.982bc6c4-3d7f-4c15-b611-ad1a91310416.004.png) 
 
 1. Aplica el ultimo Restart y ya queda listo tu IDS.
 
-![Imagen que contiene Texto
-
-Descripción generada automáticamente](img/Aspose.Words.982bc6c4-3d7f-4c15-b611-ad1a91310416.003.png)
-
+![Imagen que contiene Texto Descripción generada automáticamente](img/Aspose.Words.982bc6c4-3d7f-4c15-b611-ad1a91310416.003.png)
 
 
 ![Zabbix Server 6.2 – Marketplace – Consola de Google Cloud](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.001.png)
@@ -115,242 +108,232 @@ https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows
 
 ![](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.004.png)
 
-1. ` `**Copiar y pegar el siguiente texto:**
+1.  **Copiar y pegar el siguiente texto:**
 
 **version: '3.5'**
 
 **services:**
 
-`  `**server:**
+**server:**
 
-`    `**image: zabbix/zabbix-server-pgsql:alpine-5.4-latest**
+**image: zabbix/zabbix-server-pgsql:alpine-5.4-latest**
 
-`    `**ports:**
+**ports:**
 
-`      `**- "10051:10051"**
+**\- "10051:10051"**
 
-`    `**volumes:**
+**volumes:**
 
-`      `**- /etc/localtime:/etc/localtime:ro**
+**\- /etc/localtime:/etc/localtime:ro**
 
-`      `**- /etc/timezone:/etc/timezone:ro** 
+**\- /etc/timezone:/etc/timezone:ro**
 
-`      `**- ./zbx\_env/usr/lib/zabbix/alertscripts:/usr/lib/zabbix/alertscripts:ro**
+**\- ./zbx\_env/usr/lib/zabbix/alertscripts:/usr/lib/zabbix/alertscripts:ro**
 
-`      `**- ./zbx\_env/usr/lib/zabbix/externalscripts:/usr/lib/zabbix/externalscripts:ro**
+**\- ./zbx\_env/usr/lib/zabbix/externalscripts:/usr/lib/zabbix/externalscripts:ro**
 
-`      `**- ./zbx\_env/var/lib/zabbix/export:/var/lib/zabbix/export:rw**
+**\- ./zbx\_env/var/lib/zabbix/export:/var/lib/zabbix/export:rw**
 
-`      `**- ./zbx\_env/var/lib/zabbix/modules:/var/lib/zabbix/modules:ro**
+**\- ./zbx\_env/var/lib/zabbix/modules:/var/lib/zabbix/modules:ro**
 
-`      `**- ./zbx\_env/var/lib/zabbix/enc:/var/lib/zabbix/enc:ro**
+**\- ./zbx\_env/var/lib/zabbix/enc:/var/lib/zabbix/enc:ro**
 
-`      `**- ./zbx\_env/var/lib/zabbix/ssh\_keys:/var/lib/zabbix/ssh\_keys:ro**
+**\- ./zbx\_env/var/lib/zabbix/ssh\_keys:/var/lib/zabbix/ssh\_keys:ro**
 
-`      `**- ./zbx\_env/var/lib/zabbix/mibs:/var/lib/zabbix/mibs:ro**
+**\- ./zbx\_env/var/lib/zabbix/mibs:/var/lib/zabbix/mibs:ro**
 
-`      `**- ./zbx\_env/var/lib/zabbix/snmptraps:/var/lib/zabbix/snmptraps:ro**
+**\- ./zbx\_env/var/lib/zabbix/snmptraps:/var/lib/zabbix/snmptraps:ro**
 
-`    `**restart: always**
+**restart: always**
 
-`    `**depends\_on:**
+**depends\_on:**
 
-`      `**- postgres-server**
+**\- postgres-server**
 
-`    `**environment:**
+**environment:**
 
-`      `**- POSTGRES\_USER=zabbix**
+**\- POSTGRES\_USER=zabbix**
 
-`      `**- POSTGRES\_PASSWORD=zabbix**
+**\- POSTGRES\_PASSWORD=zabbix**
 
-`      `**- POSTGRES\_DB=zabbixNew**
+**\- POSTGRES\_DB=zabbixNew**
 
-`      `**- ZBX\_HISTORYSTORAGETYPES=log,text #Zabbix configuration variables**
+**\- ZBX\_HISTORYSTORAGETYPES=log,text #Zabbix configuration variables**
 
-`      `**- ZBX\_DEBUGLEVEL=1**
+**\- ZBX\_DEBUGLEVEL=1**
 
-`      `**- ZBX\_HOUSEKEEPINGFREQUENCY=1**
+**\- ZBX\_HOUSEKEEPINGFREQUENCY=1**
 
-`      `**- ZBX\_MAXHOUSEKEEPERDELETE=5000**
+**\- ZBX\_MAXHOUSEKEEPERDELETE=5000**
 
-`      `**- ZBX\_PROXYCONFIGFREQUENCY=3600**
+**\- ZBX\_PROXYCONFIGFREQUENCY=3600**
 
-`  `**web-nginx-pgsql:**
+**web-nginx-pgsql:**
 
-`    `**image: zabbix/zabbix-web-nginx-pgsql:alpine-5.4-latest**
+**image: zabbix/zabbix-web-nginx-pgsql:alpine-5.4-latest**
 
-`    `**ports:**
+**ports:**
 
-`      `**- "8080:8080"**
+**\- "8080:8080"**
 
-`      `**- "8443:8443"**
+**\- "8443:8443"**
 
-`    `**volumes:**
+**volumes:**
 
-`      `**- /etc/localtime:/etc/localtime:ro**
+**\- /etc/localtime:/etc/localtime:ro**
 
-`      `**- /etc/timezone:/etc/timezone:ro**
+**\- /etc/timezone:/etc/timezone:ro**
 
-`      `**- ./zbx\_env/etc/ssl/nginx:/etc/ssl/nginx:ro**
+**\- ./zbx\_env/etc/ssl/nginx:/etc/ssl/nginx:ro**
 
-`      `**- ./zbx\_env/usr/share/zabbix/modules/:/usr/share/zabbix/modules/:ro**
+**\- ./zbx\_env/usr/share/zabbix/modules/:/usr/share/zabbix/modules/:ro**
 
-`    `**healthcheck:**
+**healthcheck:**
 
-`      `**test: ["CMD", "curl", "-f", "http://localhost:8080/"]**
+**test: \["CMD", "curl", "-f", "http://localhost:8080/"\]**
 
-`      `**interval: 10s**
+**interval: 10s**
 
-`      `**timeout: 5s**
+**timeout: 5s**
 
-`      `**retries: 3**
+**retries: 3**
 
-`      `**start\_period: 30s**
+**start\_period: 30s**
 
-`    `**sysctls:**
+**sysctls:**
 
-`      `**- net.core.somaxconn=65535**
+**\- net.core.somaxconn=65535**
 
-`    `**restart: always**
+**restart: always**
 
-`    `**depends\_on:**
+**depends\_on:**
 
-`      `**- server**
+**\- server**
 
-`      `**- postgres-server**
+**\- postgres-server**
 
-`    `**environment:**
+**environment:**
 
-`      `**- POSTGRES\_USER=zabbix**
+**\- POSTGRES\_USER=zabbix**
 
-`      `**- POSTGRES\_PASSWORD=zabbix**
+**\- POSTGRES\_PASSWORD=zabbix**
 
-`      `**- POSTGRES\_DB=zabbixNew**
+**\- POSTGRES\_DB=zabbixNew**
 
-`      `**- ZBX\_SERVER\_HOST=server**
+**\- ZBX\_SERVER\_HOST=server**
 
-`      `**- ZBX\_POSTMAXSIZE=64M**
+**\- ZBX\_POSTMAXSIZE=64M**
 
-`      `**- PHP\_TZ=Europe/Moscow**
+**\- PHP\_TZ=Europe/Moscow**
 
-`      `**- ZBX\_MAXEXECUTIONTIME=500**
-**
+**\- ZBX\_MAXEXECUTIONTIME=500**  
+\*\*
 
+**agent:**
 
-`  `**agent:**
+**image: zabbix/zabbix-agent:alpine-5.4-latest**
 
-`    `**image: zabbix/zabbix-agent:alpine-5.4-latest**
+**ports:**
 
-`    `**ports:**
+**\- "10050:10050"**
 
-`      `**- "10050:10050"**
+**volumes:**
 
-`    `**volumes:**
+**\- /etc/localtime:/etc/localtime:ro**
 
-`      `**- /etc/localtime:/etc/localtime:ro**
+**\- /etc/timezone:/etc/timezone:ro**
 
-`      `**- /etc/timezone:/etc/timezone:ro**
+**\- ./zbx\_env/etc/zabbix/zabbix\_agentd.d:/etc/zabbix/zabbix\_agentd.d:ro**
 
-`      `**- ./zbx\_env/etc/zabbix/zabbix\_agentd.d:/etc/zabbix/zabbix\_agentd.d:ro**
+**\- ./zbx\_env/var/lib/zabbix/modules:/var/lib/zabbix/modules:ro**
 
-`      `**- ./zbx\_env/var/lib/zabbix/modules:/var/lib/zabbix/modules:ro**
+**\- ./zbx\_env/var/lib/zabbix/enc:/var/lib/zabbix/enc:ro**
 
-`      `**- ./zbx\_env/var/lib/zabbix/enc:/var/lib/zabbix/enc:ro**
+**\- ./zbx\_env/var/lib/zabbix/ssh\_keys:/var/lib/zabbix/ssh\_keys:ro**
 
-`      `**- ./zbx\_env/var/lib/zabbix/ssh\_keys:/var/lib/zabbix/ssh\_keys:ro**
+**privileged: true**
 
-`    `**privileged: true**
+**pid: "host"**
 
-`    `**pid: "host"**
+**restart: always**
 
-`    `**restart: always**
+**depends\_on:**
 
-`    `**depends\_on:**
+**\- server**
 
-`      `**- server**
+**environment:**
 
-`    `**environment:**
+**\- ZBX\_SERVER\_HOST=server**  
+\*\*
 
-`      `**- ZBX\_SERVER\_HOST=server**
-**
+**snmptraps:**
 
+**image: zabbix/zabbix-snmptraps:alpine-5.4-latest**
 
-`  `**snmptraps:**
+**ports:**
 
-`    `**image: zabbix/zabbix-snmptraps:alpine-5.4-latest**
+**\- "162:1162/udp"**
 
-`    `**ports:**
+**volumes:**
 
-`      `**- "162:1162/udp"**
+**\- ./snmptraps:/var/lib/zabbix/snmptraps:rw**
 
-`    `**volumes:**
+**restart: always**
 
-`      `**- ./snmptraps:/var/lib/zabbix/snmptraps:rw**
+**depends\_on:**
 
-`    `**restart: always**
+**\- server**
 
-`    `**depends\_on:**
+**environment:**
 
-`      `**- server**
+**\- ZBX\_SERVER\_HOST=server**  
+\*\*
 
-`    `**environment:**
+**postgres-server:**
 
-`      `**- ZBX\_SERVER\_HOST=server**
-**
+**image: postgres:13-alpine**
 
+**volumes:**
 
-`  `**postgres-server:**
+**\- ./zbx\_env/var/lib/postgresql/data:/var/lib/postgresql/data:rw**
 
-`    `**image: postgres:13-alpine**
+**\- ./.ZBX\_DB\_CA\_FILE:/run/secrets/root-ca.pem:ro**
 
-`    `**volumes:**
+**\- ./.ZBX\_DB\_CERT\_FILE:/run/secrets/server-cert.pem:ro**
 
-`      `**- ./zbx\_env/var/lib/postgresql/data:/var/lib/postgresql/data:rw**
+**\- ./.ZBX\_DB\_KEY\_FILE:/run/secrets/server-key.pem:ro**
 
-`      `**- ./.ZBX\_DB\_CA\_FILE:/run/secrets/root-ca.pem:ro**
+**environment:**
 
-`      `**- ./.ZBX\_DB\_CERT\_FILE:/run/secrets/server-cert.pem:ro**
+**\- POSTGRES\_PASSWORD=zabbix**
 
-`      `**- ./.ZBX\_DB\_KEY\_FILE:/run/secrets/server-key.pem:ro**
+**\- POSTGRES\_USER=zabbix**
 
-`    `**environment:**
+**\- POSTGRES\_DB=zabbixNew**
 
-`      `**- POSTGRES\_PASSWORD=zabbix**
+**healthcheck:**
 
-`      `**- POSTGRES\_USER=zabbix**
+**test: \["CMD-SHELL", "pg\_isready"\]**
 
-`      `**- POSTGRES\_DB=zabbixNew**
+**interval: 10s**
 
-`    `**healthcheck:**
+**timeout: 5s**
 
-`      `**test: ["CMD-SHELL", "pg\_isready"]**
+**retries: 5**  
+\*\*
 
-`      `**interval: 10s**
-
-`      `**timeout: 5s**
-
-`      `**retries: 5**
-**
-
-**
+\*\*
 
 
 1. **Luego de Haber pegado el texto, dar click en archivo, guardar como, del programa bloc de notas.**
 
-![](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.005.png)![](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.006.png)![](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.007.png)
+![](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.007.png)
 
 1. **Guardar en la ruta de la carpeta antes creada: Descargas/zabbix1, guardarlo con el nombre  docker-compose.yaml, clic en guardar.**
 
 
 ![](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.008.png)
 
-![](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.009.png)
-
-
-
-![](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.010.png)
-
-![](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.011.png)
 
 1. **Diríjase de nuevo al buscador de Windows y abra otro bloc de notas**
 1. **En este bloc de notas pegue el siguiente texto:**
@@ -365,9 +348,7 @@ https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows
 
 1. **Luego de Haber pegado el texto, dar click en archivo, guardar como, del programa bloc de notas.**
 
-![](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.012.png)![](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.013.png)![Interfaz de usuario gráfica, Aplicación, Word
-
-Descripción generada automáticamente](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.007.png)
+![Interfaz de usuario gráfica, Aplicación, Word Descripción generada automáticamente](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.007.png)
 
 
 
@@ -376,16 +357,9 @@ Descripción generada automáticamente](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0
 ![](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.014.png)
 
 
-![](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.015.png)
-
-![](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.016.png)
-
-![](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.017.png)
-
-
 1. **Después de a ver culminado la creación de los archivos deben quedar de esta manera**
 
-![](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.018.png)![](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.019.png)
+![](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.019.png)
 
 1. **Abra la línea de comandos POWER SHELL** 
 
@@ -393,9 +367,7 @@ Descripción generada automáticamente](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0
 
 1. **Diríjase a la siguiente ruta como se evidencia en la imagen:**
 
-![Texto
-
-Descripción generada automáticamente](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.021.png)** 
+![Texto Descripción generada automáticamente](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.021.png)** 
 
 1. **Cuando se encuentre en la ruta anterior ejecute el siguiente comando, Docker compose up**
 
@@ -408,7 +380,7 @@ Descripción generada automáticamente](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0
 
 1. **Después de que haya culminado la instalación, diríjase al Docker para verificar, todas las imágenes se encuentre arriba como se evidencia en la imagen.**
 
-![](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.024.png)![](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.025.png)
+![](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.025.png)
 
 1. **Después de verificar que todo este arriba, diríjase a un navegador de su preferencia, en este caso yo escogeré Google.com ![](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.026.png)**
 
@@ -416,9 +388,7 @@ Descripción generada automáticamente](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0
 
 1. **Lo llevara a una pagina principal** 
 
-![Interfaz de usuario gráfica, Aplicación, Sitio web
-
-Descripción generada automáticamente](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.027.png)
+![Interfaz de usuario gráfica, Aplicación, Sitio web Descripción generada automáticamente](img/Aspose.Words.6b684cf6-1c58-45e7-8fe0-0ea0ab2e7d7a.027.png)
 
 1. **El usuario es Admin y la contraseña es zabbix**
 1. **Ingresaran a un inicio de sesión de estos**
