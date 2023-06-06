@@ -1,4 +1,4 @@
-**MANUAL DE DESPLIEGUE PROYECTO DIPLIMADO DEVOPS UNIMINUTO 2023-01**
+# MANUAL DE DESPLIEGUE PROYECTO DIPLIMADO DEVOPS UNIMINUTO 2023-01
 
 Este documento ha sido creado para proporcionar a los equipos de desarrollo y operaciones una guía completa y detallada sobre el proceso de despliegue de este proyecto sobre la integración de herramientas Api Blockchain, IDS Snort-Snorby y monitoreo Zabbix, utilizando metodologías y prácticas de DevOps. Este manual abordará los conceptos fundamentales de DevOps, proporcionando una visión general de los principios y prácticas que lo respaldan. Además, presentaremos un enfoque paso a paso para el despliegue de proyectos utilizando herramientas y técnicas modernas.  
  
