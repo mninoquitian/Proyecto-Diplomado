@@ -2,7 +2,25 @@
 
 Api Block Chain
 
-Proyecto desarrollado para lograr desarrollar una aplicación con una arquitectura de aplicación distribuida o arquitectura de microservicios. Donde este corresponde al backend. Con el objetivo de generar transacción y poder ver los registros correspondientes.
+¡Bienvenido a la introducción de una API desarrollada en Python para realizar transacciones teniendo en cuenta los bloques de un blockchain!
+
+En esta introducción, se mostrara los conceptos básicos de un blockchain y como se puede utilizar una API en Python para realizar transacciones seguras y confiables.
+
+¿Qué es un blockchain?
+
+Un blockchain es una estructura de datos descentralizada y distribuida que registra transacciones de manera segura y transparente. Consiste en una cadena de bloques enlazados, donde cada bloque contiene un conjunto de transacciones verificadas y un hash único que lo identifica. Los bloques se agregan secuencialmente a la cadena, formando un registro inmutable y resistente a la modificación.
+
+La API de transacciones blockchain en Python
+
+La API de transacciones blockchain en Python que se desarrollo proporcionará una interfaz para crear y transmitir transacciones. Aquí hay una descripción general de las funcionalidades principales que abordaremos:
+
+Creación de transacciones: Permitirá a los usuarios crear una nueva transacción proporcionando información como la dirección del remitente, la dirección del destinatario y el monto de la transacción.
+
+Validación de transacciones: La API verificará la validez de una transacción utilizando reglas específicas, como verificar que el remitente tenga fondos suficientes para cubrir el monto de la transacción y que la firma digital sea válida.
+
+Construcción de bloques: Una vez que una transacción ha sido validada, se agregará a un bloque junto con otras transacciones pendientes. El bloque se construira de acuerdo a una serie de reglas del blockchain, donde por cada 3 transacciones se genera un nuevo bloque y el anterior se cierra generando su firma.
+
+Consulta de la cadena de bloques: La API proporcionará métodos para acceder a información sobre la cadena de bloques, como obtener el historial de transacciones que ha realizado un identificando que saldo fue a favor y que no.
 
 # Documentación proyecto
 La documentación del proyecto en general la puedes encontrar en: [documentación](https://github.com/mninoquitian/Proyecto-Diplomado/tree/master/Documentacion)
